@@ -89,6 +89,9 @@ class Tempat_wisata_model extends CI_Model
         $foto3 = $this->uploadFoto("foto3");
         
         $post = $this->input->post();
+
+        $fetch = $this->getById($post["id"]);
+
         $this->id = $post["id"];
         $this->nama = $post["nama"];
         $this->alamat = $post["alamat"];
@@ -96,9 +99,9 @@ class Tempat_wisata_model extends CI_Model
         $this->jenis_id = $post["jenis_id"];
         $this->skor_rating = $post["skor_rating"];
         $this->harga_tiket = $post["harga_tiket"];
-        $this->foto1 = $foto1["file_name"];
-        $this->foto2 = $foto2["file_name"];
-        $this->foto3 = $foto3["file_name"];
+        $this->foto1 = $foto1 ? $foto1["file_name"] : $fetch->foto1;
+        $this->foto2 = $foto2 ? $foto2["file_name"] : $fetch->foto2;
+        $this->foto3 = $foto3 ? $foto3["file_name"] : $fetch->foto3;
         $this->kecamatan_id = $post["kecamatan_id"];
         $this->website = $post["website"];
         $this->fasilitas = $post["fasilitas"];
