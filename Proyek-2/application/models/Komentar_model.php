@@ -42,6 +42,7 @@ class Komentar_model extends CI_Model
         $this->db->join('tempat_wisata tw', 'tw.id = k.wisata_id');
         $this->db->join('users u', 'u.id = k.users_id');
         $this->db->join('nilai_rating nr', 'nr.id = k.nilai_rating_id');
+        $this->db->where('k.wisata_id', $id);
         return $this->db->get()->result();
     }
 }
